@@ -3,7 +3,6 @@ const nodemailer = require('nodemailer')
 const dotenv = require('dotenv');
 const path = require('path');
 
-
 dotenv.config({
     path : path.join(__dirname,'../.env')
 });
@@ -21,7 +20,7 @@ module.exports = function(reciever, msg){
     const mailOptions = {
         from: process.env.REACT_APP_EMAIL,
         to: reciever,
-        subject: 'AMKAMTECH',
+        subject: 'sinplay',
         text: msg
     }
 

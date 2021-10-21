@@ -1,8 +1,11 @@
-const { conn } = require('../connection')
 const sendmail = require('./NodeMailer')
 
-async function Customer(req, res, next){
-    await push(conn, req, res);
+module.exports = async function(app, conn, urlencodedParser){
+    app.post('/api/recieve_message', urlencodedParser, pushCustomer)
+
+    async function pushCustomer(req, res, next){
+        await push(conn, req, res);
+    }
 }
 
 
@@ -35,5 +38,3 @@ async function push(conn, req, res){
         return;
     }
 }
-
-module.exports = Customer;
