@@ -25,7 +25,7 @@ module.exports = function(reciever, msg){
     }
 
     transporter.sendMail(mailOptions, (err, info) => {
-        if(err) throw(err)
+        if(err) console.log(err)
         else console.log(info.response)
     })
 }
