@@ -1,9 +1,13 @@
 const express = require('express') 
-
+const cors = require('cors');
 const app = express();
 
 var bodyParser = require('body-parser')
 
+app.use(cors({
+    origin: '*',
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
 
 const {conn} = require('./connection')
 const { Contact } = require('./Contact');
