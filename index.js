@@ -4,10 +4,7 @@ const app = express();
 
 var bodyParser = require('body-parser')
 
-app.use(cors({
-    origin: '*',
-    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
-}));
+app.use(cors());
 
 const {conn} = require('./connection')
 const { Contact } = require('./Contact');
@@ -16,13 +13,16 @@ const PORT = process.env.PORT || 8000;
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
-app.use(Contact);
+
 
 
 conn.connect((err)=>{
     if(!err)
     {
-        console.log('connected');
+        app.use(Contact);
+        app.get('/', (req, res, next)=>{
+            res.send('Running');
+        })
     }
     else
     {
