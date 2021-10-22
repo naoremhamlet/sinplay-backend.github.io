@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 
 const { conn } = require('./connection')
 const Customer = require('./src/Customer')
+const Meeting = require('./src/Meeting')
 
 const PORT = process.env.PORT || 8000;
 const app = express()
@@ -18,9 +19,10 @@ app.on('ready', () => {
     res.send("Running");
   })
     Customer(app, conn, urlencodedParser)
+    Meeting(app, conn, urlencodedParser)
 })
 
 app.listen(PORT, () => {
-  console.log(`Listening at http://localhost:${PORT}`)
+  console.log(`Server Running`)
   app.emit('ready')
 })
