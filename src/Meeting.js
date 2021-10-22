@@ -12,7 +12,6 @@ module.exports = async function(app, conn, urlencodedParser){
 async function add(conn, req, res){
     let { data } = req.body;
     let values = `('${data.date}', '${data.name}', '${data.email}', '${data.about}', '${data.guest_email}')`;
-    console.log(values);
     
     let sql = `INSERT INTO meeting (date, name, email, about, guest_email) VALUES ${values}`;
     let pushdatas = await new Promise((resolve, reject) => {
@@ -24,5 +23,4 @@ async function add(conn, req, res){
 
     sendmail(data.email, `Your message is schedule on ${new Date(data.date).toLocaleString('en-IN')}. \nPlease be prepared and will get to you soon`)
     res.send({ success: true })
-    return;
 }

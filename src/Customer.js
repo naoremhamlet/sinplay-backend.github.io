@@ -33,7 +33,7 @@ async function push(conn, req, res){
             })
         })
 
-        await sendmail(data.email, '\tThank You for reaching us.\nWe will get back to you at the earliest.\nHR \nSinplay')
+        sendmail(data.email, '\tThank You for reaching us.\nWe will get back to you at the earliest.\nHR \nSinplay')
         res.send({ success: true })
     }
 }
