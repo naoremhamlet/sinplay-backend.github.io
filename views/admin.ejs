@@ -67,7 +67,7 @@
                     <tbody>
                         <% meetings.forEach((v, i) => { %>
                             <tr>
-                                <td><%= new Date(v.date).toLocaleString('en-IN', { timeZone: 'IST', dateStyle: 'short', timeStyle: 'short' }) %></td>
+                                <td><%= new Date(v.date).toLocaleString('en-IN', { dateStyle: 'short', timeStyle: 'short' }) %></td>
                                 <td><%= v.name %></td>
                                 <td><%= v.email %></td>
                                 <td><%= v.about %></td>
