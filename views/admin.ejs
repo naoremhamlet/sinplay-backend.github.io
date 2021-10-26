@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<link rel="stylesheet" href="admin.css">
+<body>
+    <div class="dashboard-container">
+        <h1>Dashboard</h1>
+        <div class="btn-holder">
+            <span>
+                <select id="change-btn" >
+                    <option value="Customer">Customer</option>
+                    <option value="Meeting">Meeting</option>
+                </select>
+            </span>
+            <span id="log-out-btn"><a href="/logout">Log-Out</a></span>
+        </div>
+        <div class="content">
+            <div class="customer-content">
+                <p class="customer-heading">Customer</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Company</th>
+                            <th>Phone</th>
+                            <th>About</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% customers.forEach((v,i) => { %>
+                            <tr>
+                                <td><%= v.name %></td>
+                                <td><%= v.email %></td>
+                                <td><%= v.company %></td>
+                                <td><%= v.phone %></td>
+                                <td><%= v.about %></td>
+                                <td>
+                                    <form id="customer<%= i %>" method="post" action="/delete_data">
+                                        <input type="hidden" name="table" value="customer">
+                                        <input type="hidden" name="email" value="<%= v.email %>">
+                                        <div onclick="document.getElementById('customer<%= i %>').submit();"><img src="delete.svg" alt="✖"></div>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="meeting-content" style="display: none;">
+                <p class="meeting-heading">Meeting</p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date-Time</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>About</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% meetings.forEach((v, i) => { %>
+                            <tr>
+                                <td><%= new Date(v.date).toLocaleString('en-IN', { timeZone: 'IST', dateStyle: 'short', timeStyle: 'short' }) %></td>
+                                <td><%= v.name %></td>
+                                <td><%= v.email %></td>
+                                <td><%= v.about %></td>
+                                <td>
+                                    <form id="meeting<%= i %>" method="post" action="/delete_data">
+                                        <input type="hidden" name="table" value="meeting">
+                                        <input type="hidden" name="email" value="<%= v.email %>">
+                                        <div onclick="document.getElementById('meeting<%= i %>').submit();"><img src="delete.svg" alt="✖"></div>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+
+            document.getElementById('change-btn').addEventListener('change', (e) => {
+                console.log(e.target.value);
+                if(e.target.value==="Meeting"){
+                    document.getElementsByClassName('meeting-content')[0].style.display = "";
+                    document.getElementsByClassName('customer-content')[0].style.display = "none";
+                }
+                else{
+                    document.getElementsByClassName('meeting-content')[0].style.display = "none";
+                    document.getElementsByClassName('customer-content')[0].style.display = "";
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

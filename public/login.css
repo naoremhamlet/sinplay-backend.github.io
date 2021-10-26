@@ -1,0 +1,41 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+.log-in{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    font-family: sans-serif;
+    border: solid 1px black;
+    background-color: rgb(226, 164, 164);
+}
+
+.log-in .log-msg{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(204, 250, 204);
+    font: 900 15px black;
+    padding: 8px;
+    margin-top: 0px;
+}
+
+.log-in form{
+    padding: 10px;
+}
+
+.log-in form label{
+    padding: 5px;
+}
+
+.log-in form input{
+    padding: 5px;
+}
+.log-in form button{
+    padding: 5px 15px;
+    margin-left: 10px;
+}
