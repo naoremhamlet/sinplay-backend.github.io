@@ -12,6 +12,7 @@ Contact.post('/api/recieve_message', (req, res, next) => {
 Contact.post('/api/set_meeting', (req, res, next) => {
     Meeting(req, res, next, conn)
 })
+//added this
 Contact.post('/api/subscribe_newsletter', (req, res, next) => {
     Newsletter(req, res, next, conn)
 })
